@@ -1,0 +1,84 @@
+{include file="index/header.html"}
+</nav>
+<link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+<link rel="stylesheet" href="{CSS_PATH}admin.css">
+<script src="{JS_PATH}jquery.js"></script>
+<script src="{JS_PATH}pintuer.js"></script>
+<script src="{JS_PATH}ajax_upload.js"></script>
+<script src="{JS_PATH}index/admin.js"></script>
+<script type="text/javascript" charset="utf-8" src="{HTTP_URL}/static/editor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="{HTTP_URL}/static/editor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="{HTTP_URL}/static/editor/lang/zh-cn/zh-cn.js"></script>
+<style>
+    #wrap{
+        width: 100px;
+        height:100px;
+        float: left;
+        border: 1px solid #ccc;
+    }
+    #wrap img{
+        width:100%;
+    }
+</style>
+<div class="panel admin-panel" style="margin-top: 55px">
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>发表文章</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-x" action="index.php?m=index&f=art&a=addArtCheck">
+            <div class="form-group">
+                <div class="label">
+                    <label>上级分类：</label>
+                </div>
+                <div class="field">
+                    <select name="cid" class="input w50">
+                        <option value="0">一级分类</option>
+                        {$str}
+                    </select>
+                    <div class="tips">选择文章类型</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>文章标题：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="stitle" />
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>文章描述：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" name="sdesc"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>封面缩略图：</label>
+                </div>
+                <div class="field">
+                    <input type="hidden" name="hidden" id="hidden" value="" />
+                    <input type="file" name="file" value="" multiple="multiple" class="file"/>
+                </div>
+                <div id="wrap">
+                    <img src="" alt="" class="uploadImg"/>
+                </div>
+            </div>
+            <div class="label" style="margin-left: 60px">
+                <label>文章内容：</label>
+                <script  id="editor" type="text/plain" style="width:1024px;height:500px;margin-left:75px" name="scon"></script>
+            </div>
+            <div class="form-group">
+                <div class="label" style="width: 10%">
+                    <label></label>
+                </div>
+                <div class="field">
+                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

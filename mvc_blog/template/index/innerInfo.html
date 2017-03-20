@@ -1,0 +1,230 @@
+{include file="index/header.html"}
+</nav>
+<link rel="stylesheet" href="{CSS_PATH}index/bootstrap.css">
+<link rel="stylesheet" href="{CSS_PATH}index/base.css">
+<link rel="stylesheet" href="{CSS_PATH}index/focus.css">
+<link rel="stylesheet" href="{CSS_PATH}index/font/iconfont.css">
+<script src="{JS_PATH}jquery.js"></script>
+<script src="{JS_PATH}index/focus.js"></script>
+<div class="container">
+    <h1 class="text-center">
+        {$result[0]["stitle"]}
+    </h1>
+    <div class="author">
+        <a href="index.php?m=index&f=index&a=friendHome&id={$result[0]['uid']}" class="headImg">
+            <img src="{$result[0]['picture']}" alt="">
+        </a>
+        <div class="author_info">
+            <span class="tag" attr="{$result[0]['uid']}" sid="{$result[0]['sid']}">作者</span>
+            <span class="name">
+                <a href="">{$result[0]["author"]}</a>
+            </span>
+
+            {if $foucs eq "true"}
+            <a href="javascript:;" class="btn btn-success guanzhu" style="display: none">关注</a>
+            <a href="javascript:;" class="btn btn-success quxiaoguanzhu" >取消关注</a>
+            {elseif $foucs eq "false"}
+            <a href="javascript:;" class="btn btn-success guanzhu">关注</a>
+            <a href="javascript:;" class="btn btn-success quxiaoguanzhu" style="display: none">取消关注</a>
+            {/if}
+
+            <div class="meta">
+                <span class="push-time">{$result[0]["time"]}</span>
+                <span class="read">阅读 <span class="count">{$result[0]["hits"]}</span></span>
+                <span class="comments">评论 <span class="count">{count($commentArr)}</span></span>
+                <span class="good">点赞 <span class="count">{$result[0]["good"]}</span></span>
+            </div>
+        </div>
+    </div>
+    <div class="con">
+        {$result[0]["scon"]}
+    </div>
+    <!--收藏-->
+    {if $love eq "true"}
+    <a href="javascript:;" class="btn btn-success shoucang" style="display: none">收藏</a>
+    <a href="javascript:;" class="btn btn-success cancelshoucang">取消收藏</a>
+    {elseif $love eq "false"}
+    <a href="javascript:;" class="btn btn-success shoucang">收藏</a>
+    <a href="javascript:;" class="btn btn-success cancelshoucang" style="display: none">取消收藏</a>
+    {/if}
+    <!--点赞-->
+    {if $dianzan eq "true"}
+    <a href="javascript:;" class="btn btn-success dianzan" style="display: none">点赞</a>
+    <a href="javascript:;" class="btn btn-success canceldianzan" >取消点赞</a>
+    {elseif $dianzan eq "false"}
+    <a href="javascript:;" class="btn btn-success dianzan">点赞</a>
+    <a href="javascript:;" class="btn btn-success canceldianzan" style="display: none">取消点赞</a>
+    {/if}
+    <!--评论-->
+    <div>
+        <div class="comment-list">
+            <div>
+                <form action="" class="new-comment">
+                    <a href="" class="avatar">
+                        <img src="{if isset($resultUser)}
+                        {$resultUser['picture']}
+                        {/if}" alt="">
+                    </a>
+                    <textarea name="newComment" placeholder="写下你的评论...." class="newComment"></textarea>
+                    <div class="write-submit">
+                        <a href="javascript:;" class="btn btn-primary message-btn">留言</a>
+                        <a href="javascript:;" class="btn btn-danger">取消</a>
+                    </div>
+                </form>
+            </div>
+            <div class="top">
+                <span>共有<span>
+                    {if count($arr)<1}
+                    0
+                    {else}
+                    {count($commentArr)}
+                    {/if}
+                </span>条评论</span>
+            </div>
+            <div class="normal-comment-list">
+
+                <div class="comment" style="display:none">
+                    <!--这里是评论-->
+                    <div class="innerInfo">
+                        <div class="author">
+                            <a href="" class="avatar">
+                                <img src="" alt="">
+                            </a>
+                            <div class="info">
+                                <a href="" class="name"></a>
+                                <div class="meta">
+                                    <span><i></i>楼 <em></em></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-wrap">
+                            <p></p>
+                            <div class="tool-group">
+                                <!--<a href="javascript:;">-->
+                                    <!--&lt;!&ndash;点赞数&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<i class="iconfont icon-dianzan"></i>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<span>123</span>&ndash;&gt;-->
+                                <!--</a>-->
+                                <div class="comment-btn" style="display: inline-block">
+                                    <a href="javascript:;"  class="comment-btn1">
+                                        <i class="iconfont icon-huifu"></i>
+                                        <span>回复1</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--这里是评论结束-->
+                    <!--这里是回复评论-->
+                    <div class="sub-comment-list">
+                        <div class="sub-comment">
+                            <p>
+                                <a href="" class="name"></a>
+                                <span><a href="javascript:;"></a> <span></span></span>
+                            </p>
+                            <div class="sub-tool-group">
+                                <span class="time"></span>
+                                <div class="comment-btn" style="display: inline-block">
+                                    <a href="javascript:;"  class="comment-btn2">
+                                        <i class="iconfont icon-huifu"></i>
+                                        <span>回复</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--回复在这里循环结束-->
+                    <!--这里是评论框-->
+
+                    <form action="" class="new-comment new-comment-btn">
+                        <textarea name="newComment" placeholder="写下你的评论...." class="replyComment"></textarea>
+                        <div class="write-submit">
+                            <a href="javascript:;" class="btn btn-primary reply-message-btn">回复</a>
+                            <a href="javascript:;" class="btn btn-danger">取消</a>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                    <!--这里循环-->
+                    {foreach $arr as $k=>$v}
+                    <div class="comment">
+                        <!--这里是评论-->
+                        <div class="innerInfo">
+                            <div class="author">
+                                <a href="" class="avatar">
+                                    <img src="{$v['picture']}" alt="">
+                                </a>
+                                <div class="info">
+                                    <a href="" class="name">{$v["uname"]}</a>
+                                    <div class="meta">
+                                        <span><i>{$k+1}</i>楼 <em>{$v["mtime"]}</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-wrap">
+                                <p>{$v["mcon"]}</p>
+                                <div class="tool-group">
+                                    <!--<a href="javascript:;">-->
+                                        <!--&lt;!&ndash;点赞数&ndash;&gt;-->
+                                        <!--<i class="iconfont icon-dianzan"></i>-->
+                                        <!--<span>123</span>-->
+                                    <!--</a>-->
+                                    <div class="comment-btn" style="display: inline-block">
+                                        <a href="javascript:;" class="comment-btn1" uid2="{$v['uid1']}" pid="{$v['mid']}">
+                                            <i class="iconfont icon-huifu"></i>
+                                            <span>回复</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--这里是评论结束-->
+                        <!--这里是回复评论-->
+                        <div class="sub-comment-list">
+                            {if isset($v["son"])}
+                            {foreach $v["son"] as $v1}
+                            <div class="sub-comment">
+                                <p>
+                                    <a href="" class="name">{$v1["uname"]}</a>
+                                    <span><a href="javascript:;"></a> <span>{$v1["mcon"]}</span></span>
+                                </p>
+                                <div class="sub-tool-group">
+                                    <span class="time">{$v1["mtime"]}</span>
+                                    <div class="comment-btn" style="display: inline-block">
+                                        <a href="javascript:;" class="comment-btn2" uid2="{$v1['uid1']}" pid="{$v['mid']}">
+                                            <i class="iconfont icon-huifu"></i>
+                                            <span>回复2</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {/foreach}
+                            {else}
+                            {/if}
+
+                        </div>
+                        <!--回复在这里循环结束-->
+                        <!--这里是评论框-->
+
+                            <form action="" class="new-comment new-comment-btn">
+                                <textarea name="newComment" placeholder="写下你的评论...." class="replyComment"></textarea>
+                                <div class="write-submit">
+                                    <a href="javascript:;" class="btn btn-primary reply-message-btn">回复</a>
+                                    <a href="javascript:;" class="btn btn-danger">取消</a>
+                                </div>
+                            </form>
+
+                    </div>
+                    {/foreach}
+            </div>
+        </div>
+    </div>
+    <!--登录提示-->
+    {include file="index/notice.html"}
+    <div class="mask"></div>
+    <div class="notice">操作成功</div>
+</div>
+</body>
+</html>

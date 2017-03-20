@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{CSS_PATH}index/bootstrap.css">
+<link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+<link rel="stylesheet" href="{CSS_PATH}admin.css">
+<script src="{JS_PATH}jquery.js"></script>
+<script src="{JS_PATH}pintuer.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-condensed text-center">
+    <tr>
+        <th>id</th>
+        <th>留言者</th>
+        <th>被留言者</th>
+        <th>文章id</th>
+        <th>pid</th>
+        <th>时间</th>
+        <th>内容</th>
+        <th>操作</th>
+    </tr>
+    {foreach $result as $v}
+    <tr>
+        <td>{$v["mid"]}</td>
+        <td>{$v["uid1"]}</td>
+        <td>{$v["uid2"]}</td>
+        <td>{$v["sid"]}</td>
+        <td>{$v["pid"]}</td>
+        <td>{$v["mtime"]}</td>
+        <td>{$v["mcon"]}</td>
+        <td>
+            <div class="button-group">
+                <a class="button border-red" href="index.php?m=admin&f=jibenSet&a=del&id={$v['mid']}"><span class="icon-trash-o"></span> 删除</a>
+            </div>
+        </td>
+    </tr>
+    {/foreach}
+</table>
+{$pages}
+</body>
+</html>

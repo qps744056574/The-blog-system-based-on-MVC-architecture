@@ -1,0 +1,189 @@
+{include file="index/header.html"}
+
+</nav>
+<link rel="stylesheet" href="{CSS_PATH}index/base1.css">
+<link rel="stylesheet" href="{CSS_PATH}index/index.css">
+<script type="text/javascript" src="{JS_PATH}index/jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}index/sliders.js"></script>
+<script type="text/javascript" src="{JS_PATH}index/select_card.js"></script>
+<article>
+    <div class="l_box f_l">
+        <div class="banner">
+            <div id="slide-holder">
+                <div id="slide-runner">
+                    <a href="/" target="_blank">
+                        <img id="slide-img-1" src="{IMG_PATH}images/a1.jpg"  alt="" />
+                    </a>
+                    <a href="/" target="_blank">
+                        <img id="slide-img-2" src="{IMG_PATH}images/a2.jpg"  alt="" />
+                    </a>
+                    <a href="/" target="_blank">
+                        <img id="slide-img-3" src="{IMG_PATH}images/a3.jpg"  alt="" />
+                    </a>
+                    <a href="/" target="_blank">
+                        <img id="slide-img-4" src="{IMG_PATH}images/a4.jpg"  alt="" />
+                    </a>
+                    <div id="slide-controls">
+                        <!--<p id="slide-client" class="text"><strong></strong><span></span></p>-->
+                        <!--<p id="slide-desc" class="text"></p>-->
+                        <p id="slide-nav"></p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                if(!window.slider) {
+                    var slider={};
+                }
+
+                slider.data= [
+                    {
+                        "id":"slide-img-1", // 与slide-runner中的img标签id对应
+                        "client":"标题1",
+                        "desc":"这里修改描述 这里修改描述 这里修改描述" //这里修改描述
+                    },
+                    {
+                        "id":"slide-img-2",
+                        "client":"标题2",
+                        "desc":"add your description here"
+                    },
+                    {
+                        "id":"slide-img-3",
+                        "client":"标题3",
+                        "desc":"add your description here"
+                    },
+                    {
+                        "id":"slide-img-4",
+                        "client":"标题4",
+                        "desc":"add your description here"
+                    }
+                ];
+
+            </script>
+        </div>
+        <!-- banner代码 结束 -->
+        <div class="topnews">
+            <h2><b>文章</b>列表</h2>
+            {foreach $result as $k=>$v}
+            <div class="blogs">
+                <figure><img src="{$v['simg']}"></figure>
+                <ul>
+                    <h3><a href="index.php?m=index&f=art&a=info&id={$v['sid']}">{$v["stitle"]}</a></h3>
+                    <p>{$v["sdesc"]}</p>
+                    <p class="autor"><span class="lm f_l"><a href="##">{$v["cname"]}</a></span><span class="dtime f_l">{$v["time"]}</span><span class="viewnum f_r">浏览（<a href="/">{$v["hits"]}</a>）</span></p>
+                </ul>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <div class="r_box f_r">
+        <div class="tit01">
+            <h3>关注我</h3>
+            <div class="gzwm">
+                <ul>
+                    <li><a class="xlwb" href="#" target="_blank">新浪微博</a></li>
+                    <li><a class="txwb" href="#" target="_blank">腾讯微博</a></li>
+                    <li><a class="rss" href="portal.php?mod=rss" target="_blank">RSS</a></li>
+                    <li><a class="wx" href="mailto:admin@admin.com">邮箱</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--tit01 end-->
+        <div class="ad300x100"> <img src="{IMG_PATH}images/ad300x100.jpg"> </div>
+        <div class="moreSelect" id="lp_right_select">
+            <div class="ms-top">
+                <ul class="hd" id="tab">
+                    <li class="cur"><a href="javascript:;">点击排行</a></li>
+                    <li><a href="javascript:;">最新文章</a></li>
+                    <li><a href="javascript:;">站长推荐</a></li>
+                </ul>
+            </div>
+            <div class="ms-main" id="ms-main">
+                <div style="display: block;" class="bd bd-news" >
+
+                    <!--浏览排名文章-->
+                    <ul>
+                        {foreach $resultOrder as $v}
+                        <li><a href="index.php?m=index&f=art&a=info&id={$v['sid']}">{$v["stitle"]}</a></li>
+                        {/foreach}
+                    </ul>
+
+                </div>
+                <div  class="bd bd-news">
+                    <ul>
+                        <!--最新发布文章-->
+                        {foreach $resultNew as $v}
+                        <li><a href="index.php?m=index&f=art&a=info&id={$v['sid']}">{$v["stitle"]}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="bd bd-news">
+                    <ul>
+                        {foreach $resultRecommend1 as $v}
+                        <li><a href="index.php?m=index&f=art&a=info&id={$v['sid']}">{$v["stitle"]}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <!--ms-main end -->
+        </div>
+        <!--切换卡 moreSelect end -->
+
+        <div class="cloud">
+            <h3>标签云</h3>
+            <ul>
+                <li><a href="">个人博客</a></li>
+                <li><a href="">web开发</a></li>
+                <li><a href="">前端设计</a></li>
+                <li><a href="">Html</a></li>
+                <li><a href="">CSS3</a></li>
+                <li><a href="">Html5+css3</a></li>
+                <li><a href="">百度</a></li>
+                <li><a href="">Javasript</a></li>
+                <li><a href="">web开发</a></li>
+                <li><a href="">前端设计</a></li>
+                <li><a href="">Html</a></li>
+                <li><a href="">CSS3</a></li>
+                <li><a href="">Html5+css3</a></li>
+                <li><a href="">百度</a></li>
+            </ul>
+        </div>
+        <div class="tuwen">
+            <h3>图文推荐</h3>
+            <ul>
+                {foreach $resultRecommend2 as $v}
+                <li><a href="index.php?m=index&f=art&a=info&id={$v['sid']}"><img src="{$v['simg']}"><b>{$v["stitle"]}</b></a>
+                    <p><span class="tulanmu"><a href="/">{$v["cname"]}</a></span><span class="tutime">{$v["time"]}</span></p>
+                </li>
+                {/foreach}
+                <!--<li><a href="/"><img src="{IMG_PATH}images/02.jpg"><b>教你怎样用欠费手机拨打电话</b></a>-->
+                    <!--<p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2015-02-15</span></p>-->
+                <!--</li>-->
+                <!--<li><a href="/" title="手机的16个惊人小秘密，据说99.999%的人都不知"><img src="{IMG_PATH}images/03.jpg"><b>手机的16个惊人小秘密，据说...</b></a>-->
+                    <!--<p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2015-02-15</span></p>-->
+                <!--</li>-->
+                <!--<li><a href="/"><img src="{IMG_PATH}images/06.jpg"><b>住在手机里的朋友</b></a>-->
+                    <!--<p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2015-02-15</span></p>-->
+                <!--</li>-->
+                <!--<li><a href="/"><img src="{IMG_PATH}images/04.jpg"><b>教你怎样用欠费手机拨打电话</b></a>-->
+                    <!--<p><span class="tulanmu"><a href="/">手机配件</a></span><span class="tutime">2015-02-15</span></p>-->
+                <!--</li>-->
+            </ul>
+        </div>
+        <div class="ad"> <img src="{IMG_PATH}images/03.jpg"> </div>
+        <div class="links">
+            <h3><span>[<a href="">申请友情链接</a>]</span>友情链接</h3>
+            <ul>
+                <li><a href="">杨胜千的个人网页</a></li>
+                <li><a href="http://www.qdfuns.com/">发现前端网</a></li>
+                <li><a href="https://github.com/ysq352358871">杨胜千的github</a></li>
+                <li><a href="https://nodejs.org/en/">Node.js</a></li>
+                <li><a href="http://reactjs.cn/react/docs/getting-started.html">React</a></li>
+                <li><a href="http://www.w3school.com.cn/">Html5+css3</a></li>
+                <li><a href="www.baidu.com">百度</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--r_box end -->
+</article>
+</body>
+</html>

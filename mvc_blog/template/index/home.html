@@ -1,0 +1,193 @@
+
+{include file="index/header.html"}
+</nav>
+<link rel="stylesheet" href="{CSS_PATH}index/bootstrap.css">
+<link rel="stylesheet" href="{CSS_PATH}index/home.css">
+<script src="{JS_PATH}jquery.js"></script>
+<script src="{JS_PATH}index/home.js"></script>
+<script src="{JS_PATH}ajax_upload.js"></script>
+<div class="container person">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="main_top">
+                <a href="" class="head_img">
+                    <img src="{$result1[0]['picture']}" alt="" class="picture">
+                </a>
+                <div class="title">
+                    <a href="" class="name">{$result1[0]['uname']}</a>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>
+                            <div class="meta-info text-center">
+                                <a href="">
+                                    <span>{count($resultFoucu)}</span>
+                                    关注
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-info text-center">
+                                <a href="">
+                                    <span>{count($resultFans)}</span>
+                                    粉丝
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-info text-center">
+                                <a href="">
+                                    <span>{count($result)}</span>
+                                    文章发布
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-info text-center">
+                                <a href="">
+                                    <span>{count($resultLove)}</span>
+                                    收藏
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {if $img eq "true"}
+                <a href="javascript:;" class="uploadImg" uid="{$result1[0]['uid']}">
+                    <input type="file" name="file" multiple="multiple" class="file">
+                    <input type="hidden" value="" name="hidden" class="hidden">
+                    更改头像
+                </a>
+                {elseif $img eq "false"}
+                {/if}
+            </div>
+            <div class="outer-container">
+                <!--菜单-->
+                <ul class="menu">
+                    <li class="active">
+                        <a href="javascript:;">我的文章</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">收藏的文章</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">关注的好友</a>
+                    </li>
+                    <!--<li>-->
+                        <!--<a href="javascript:;">我的动态</a>-->
+                    <!--</li>-->
+                </ul>
+                <div class="list-container">
+                    <ul>
+                        <li class="wrap active">
+                            <ul class="note-list">
+                                {foreach $result as $v}
+                                <li class="first">
+                                    <div class="content">
+                                        <div class="detail">
+                                            <p><a href="index.php?m=index&f=art&a=info&id={$v['sid']}">{$v["stitle"]}</a></p>
+                                            <p>{$v["sdesc"]}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </li>
+                        <li class="wrap">
+                            <ul class="note-list">
+                                <!--这里循环-->
+                                {foreach $resultLove as $love}
+                                <li class="first">
+                                    <div class="content">
+                                        <div class="detail">
+                                            <p><a href="index.php?m=index&f=art&a=info&id={$love['sid']}">{$love["stitle"]}</a></p>
+                                            <p>{$love["sdesc"]}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </li>
+                        <li class="wrap">
+                            <ul class="note-list">
+                                {foreach $resultFriend as $v}
+                                <li class="first">
+                                    <div class="main_top">
+                                        <a href="" class="head_img">
+                                            <img src="{$v['picture']}" alt="" class="picture">
+                                        </a>
+                                        <div class="title">
+                                            <a href="" class="name">{$v['uname']}</a>
+                                        </div>
+                                        <div class="info">
+                                            <ul>
+                                                <li>
+                                                    <div class="meta-info text-center">
+                                                        <a href="">
+                                                            <span>{count($v["foucu"][0])}</span>
+                                                            关注
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="meta-info text-center">
+                                                        <a href="">
+                                                            <span>{count($v["fans"][0])}</span>
+                                                            粉丝
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="meta-info text-center">
+                                                        <a href="">
+                                                            <span>{count($v["wenzhang"][0])}</span>
+                                                            文章发布
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="meta-info text-center">
+                                                        <a href="">
+                                                            <span>{count($v["love"][0])}</span>
+                                                            收藏
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 main-right right">
+            <div class="list-group">
+                <a href="javascript:;" class="list-group-item active">
+                    浏览排行榜
+                </a>
+                {foreach $resultOrder as $v}
+                <a href="index.php?m=index&f=art&a=info&id={$v['sid']}" class="list-group-item">{$v["stitle"]}</a>
+                {/foreach}
+            </div>
+
+
+            <!--<div class="list-group">-->
+                <!--<a href="javascript:;" class="list-group-item active">-->
+                    <!--关注排行榜-->
+                <!--</a>-->
+                <!--<a href="#" class="list-group-item">Dapibus ac facilisis in</a>-->
+                <!--<a href="#" class="list-group-item">Morbi leo risus</a>-->
+                <!--<a href="#" class="list-group-item">Porta ac consectetur ac</a>-->
+                <!--<a href="#" class="list-group-item">Vestibulum at eros</a>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="notice">操作成功</div>
+</div>
+</body>
+</html>

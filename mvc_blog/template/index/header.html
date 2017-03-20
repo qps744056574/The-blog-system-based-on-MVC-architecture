@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{CSS_PATH}index/base.css">
+    <link rel="stylesheet" href="{CSS_PATH}index/blog.css">
+</head>
+<body>
+<nav class="navbar" id="nav">
+    <div class="width-limit">
+        <a href="index.php" id="logo" style="font-size: 18px">Mr.杨的博客</a>
+        {if $indexLogin eq "yes"}
+        <a href="index.php?m=index&f=art&a=addArt" class="btn write_btn">发布文章</a>
+        <a href="index.php?a=indexExit" class="btn sign_out">退出</a>
+        <a href="index.php?m=index&f=index&a=home" class="btn sign_person">个人中心</a>
+        <span class="huan">欢迎<i>{$uname}</i></span>
+        {else}
+        <a href="index.php?m=index&f=art&a=addArt" class="btn write_btn">发布文章</a>
+        <a href="index.php?m=index&f=login&a=reg" class="btn sign_up">注册</a>
+        <a href="index.php?m=index&f=login&a=init" class="btn sign_in">登录</a>
+        {/if}
+    </div>

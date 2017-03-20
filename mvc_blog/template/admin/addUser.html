@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+    <link rel="stylesheet" href="{CSS_PATH}admin.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}pintuer.js"></script>
+    <script src="{JS_PATH}jquery-1.9.0.min.js"></script>
+    <script src="{JS_PATH}jquery.validate.js"></script>
+    <script src="{JS_PATH}adduser.js"></script>
+    <style>
+        #upass-error,#uname-error{
+            color: #ee3333;
+        }
+    </style>
+</head>
+<body>
+<div class="panel admin-panel margin-top" id="add">
+    <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 添加用户</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-x" action="index.php?m=admin&f=user&a=addUserCheck" id="adduser">
+            <div class="form-group">
+                <div class="label">
+                    <label>用户名：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" value="" name="uname" />
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>密码：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="upass" value=""  />
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label></label>
+                </div>
+                <div class="field">
+                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

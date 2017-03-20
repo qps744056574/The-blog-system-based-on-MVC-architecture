@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_PATH}index/bootstrap.css">
+    <link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+    <link rel="stylesheet" href="{CSS_PATH}admin.css">
+</head>
+<body>
+<p>
+    {$result[0]["scon"]}
+</p>
+<form action="index.php?m=admin&f=show&a=editConCheck" method="post">
+    <div class="form-group">
+        <div class="label" style="float: left;line-height: 33px">
+            <label>推荐属性：</label>
+        </div>
+        <div class="field" style="padding-top:8px;">
+            博主推荐 <input id="ishome"  type="checkbox" name="recommend[]" value="1"/>
+            图文推荐 <input id="isvouch"  type="checkbox" name="recommend[]" value="2"/>
+            <!--置顶 <input id="istop"  type="checkbox" name="recommend[]" value="2"/>-->
+
+        </div>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="statu" id="optionsRadios1" value="0" checked>
+            未审核
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="statu" id="optionsRadios2" value="1">
+           审核中
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="statu" id="optionsRadios3" value="2" >
+            没有通过审核
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="statu" id="optionsRadios4" value="3" >
+            通过审核
+        </label>
+        <input type="hidden" name="hidden" value="{$result[0]['sid']}">
+    </div>
+    <input class="btn btn-default" type="submit" value="提交">
+</form>
+</body>
+</html>

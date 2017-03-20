@@ -1,0 +1,114 @@
+/*导航开始*/
+#nav{
+	background: #fff;
+	border-color: red;
+	height: 56px;
+	min-height: 50px;
+	margin-bottom: 20px;
+	border: 1px solid #F0F0F0;
+	position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+    border-width: 0 0 1px;
+}
+.navbar::before,.navbar::after{
+	content: "";
+	display: table;
+	box-sizing: border-box;
+}
+nav .width-limit{
+	min-width: 768px;
+    max-width: 1440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+#logo{
+	float: left;
+    height: 56px;
+    line-height: 25px;
+    color: #e33;
+    padding: 14px 25px 15px 20px;
+}
+nav .btn{
+	display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+nav .write_btn{
+	float: right;
+    width: 100px;
+    height: 38px;
+    line-height: 24px;
+    margin: 9px 15px 0;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea6f5a;
+    box-sizing: border-box;
+}
+nav .sign_up{
+	float: right;
+    width: 80px;
+    height: 38px;
+    line-height: 24px;
+    margin: 9px 5px 0 15px;
+    border: 1px solid rgba(236,97,73,.7);
+    border-radius: 4px;
+    font-size: 15px;
+    color: #ea6f5a;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+nav .sign_in:hover,nav .sign_up:hover,nav .sign_person:hover,nav .sign_out:hover{
+	transition: .1s ease-in;
+    -webkit-transition: .1s ease-in;
+    -moz-transition: .1s ease-in;
+    -o-transition: .1s ease-in;
+    -ms-transition: .1s ease-in;
+}
+nav .sign_up:hover,nav .sign_in:hover.nav .sign_person:hover,nav .sign_out:hover{
+	color: #ec6149;
+    border-color: #ec6149;
+    background-color: rgba(236,97,73,.05);
+}
+nav .sign_in,nav .sign_person,nav .sign_out{
+	float: right;
+    width: 80px;
+    height: 38px;
+    line-height: 24px;
+    margin: 9px 5px 0 15px;
+    border: 1px solid rgba(236,97,73,.7);
+    border-radius: 4px;
+    font-size: 15px;
+    color: #ea6f5a;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+nav .huan{
+	float: right;
+	margin-top:15px;
+	color:#969696;
+    box-sizing: border-box;
+}
+nav i{
+	padding:0 10px;
+	color: #e33;
+    box-sizing: border-box;
+}
